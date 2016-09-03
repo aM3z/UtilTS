@@ -1,0 +1,35 @@
+{
+  "name": "data-structures-js",
+  "version": "1.0.0",
+  "description": "UtilJS is a module of data structures implemented in TypeScript.",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "tsc src/*.ts --module commonjs",
+    "pretest": "tsc test/*.spec.ts --module commonjs",
+    "test": "mocha"
+  },
+  "keywords": [
+    "data",
+    "structures",
+    "collection",
+    "list",
+    "stack",
+    "queue",
+    "deque",
+    "binary",
+    "search",
+    "tree",
+    "binary",
+    "tree",
+    "array",
+    "list",
+    "linked",
+    "list"
+  ],
+  "author": "Miguel Amezola",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  }
+}
