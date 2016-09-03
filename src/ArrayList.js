@@ -1,5 +1,19 @@
 "use strict";
+/**
+ * Resizable-array implementation of the List interface.
+ *
+ * @export
+ * @class ArrayList
+ * @implements {List<E>}
+ * @template E
+ *
+ * @author Miguel Amezola <amezolma@plu.edu>
+ */
 var ArrayList = (function () {
+    /**
+     * Creates an empty list.
+     *
+     */
     function ArrayList() {
         this._elementData = [];
     }
@@ -112,7 +126,10 @@ var ArrayList = (function () {
         // return the element at the specified position in this list
         return this._elementData[index];
     };
-    ArrayList.prototype.hashCode = function () { return 0; };
+    // not implemented yet
+    ArrayList.prototype.hashCode = function () {
+        return 0;
+    };
     /**
      * Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element. More formally, returns the lowest index i such that (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
      *
@@ -144,6 +161,7 @@ var ArrayList = (function () {
     ArrayList.prototype.isEmpty = function () {
         return this.size() === 0;
     };
+    // not implementated yet
     ArrayList.prototype.iterator = function () { return null; };
     /**
      * Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element. More formally, returns the highest index i such that (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
@@ -168,6 +186,7 @@ var ArrayList = (function () {
         }
         return index;
     };
+    // not implementated yet
     ArrayList.prototype.listIterator = function (index) { return null; };
     ArrayList.prototype.remove = function (element) {
         // remove the element at the specified position
@@ -201,13 +220,32 @@ var ArrayList = (function () {
             return false;
         }
     };
-    ArrayList.prototype.set = function (index, element) { return null; };
+    /**
+     * Replaces the element at the specified position in this list with the specified element.
+     *
+     * @param {number} index - index of the element to replace
+     * @param {E} element - element to be stored at the specified position
+     * @returns {E} the element previously at the specified position
+     */
+    ArrayList.prototype.set = function (index, element) {
+        // if the index is out of range
+        if (index < 0 || index >= this.size()) {
+            throw new RangeError("index is out of range (index < 0 || index >= size())");
+        }
+        // store element previously at the specified position    
+        var previousElement = this._elementData[index];
+        // replace the element at the specified position with the specified element
+        this._elementData[index] = element;
+        // return the element previously at the specified position        
+        return previousElement;
+    };
     /**
      * Returns the number of elements in this collection.
      *
      * @returns {number} the number of elements in this collection
      */
     ArrayList.prototype.size = function () { return this._elementData.length; };
+    // not implementated yet
     ArrayList.prototype.subList = function (fromIndex, toIndex) { return null; };
     /**
      * Returns an array containing all of the elements in this collection. If this collection makes any guarantees as to what order its elements are returned by its iterator, this method must return the elements in the same order.

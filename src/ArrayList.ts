@@ -3,10 +3,30 @@ import {Iterator} from './Iterator';
 import {ListIterator} from './ListIterator';
 import {Collection} from './Collection';
 
+/**
+ * Resizable-array implementation of the List interface.
+ * 
+ * @export
+ * @class ArrayList
+ * @implements {List<E>}
+ * @template E
+ * 
+ * @author Miguel Amezola <amezolma@plu.edu>
+ */
 export class ArrayList<E> implements List<E> {
 
+    /**
+     * The array buffer into which the elements of the ArrayList are stored.
+     * 
+     * @private
+     * @type {E[]}
+     */
     private _elementData: E[];
 
+    /**
+     * Creates an empty list.
+     * 
+     */
     public constructor() {
         this._elementData = [];
     }
@@ -124,7 +144,10 @@ export class ArrayList<E> implements List<E> {
         return this._elementData[index];
     }
 
-    public hashCode(): number { return 0; }
+    // not implemented yet
+    public hashCode(): number { 
+        return 0;        
+    }
 
 
     /**
@@ -159,6 +182,7 @@ export class ArrayList<E> implements List<E> {
     public isEmpty(): boolean {
         return this.size() === 0; 
     }
+    // not implementated yet
     public iterator(): Iterator<E> { return null; }
     /**
      * Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element. More formally, returns the highest index i such that (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
@@ -184,7 +208,7 @@ export class ArrayList<E> implements List<E> {
     
         return index;        
     }
-
+    // not implementated yet
     public listIterator(index: number): ListIterator<E> {return null; }
 
 
@@ -225,17 +249,33 @@ export class ArrayList<E> implements List<E> {
     }
 
 
-    public set(index: number, element: E): E {return null;}
+    /**
+     * Replaces the element at the specified position in this list with the specified element.
+     * 
+     * @param {number} index - index of the element to replace
+     * @param {E} element - element to be stored at the specified position
+     * @returns {E} the element previously at the specified position
+     */
+    public set(index: number, element: E): E {
+        // if the index is out of range
+        if(index < 0 || index >= this.size()) {
+            throw new RangeError("index is out of range (index < 0 || index >= size())");
+        }
+        // store element previously at the specified position    
+        let previousElement: E = this._elementData[index];
+        // replace the element at the specified position with the specified element
+        this._elementData[index] = element;
+        // return the element previously at the specified position        
+        return previousElement;
+    }
     /**
      * Returns the number of elements in this collection. 
      * 
      * @returns {number} the number of elements in this collection
      */
     public size(): number {return this._elementData.length;}
-
+    // not implementated yet
     public subList(fromIndex: number, toIndex: number): List<E> { return null; }
-
-
     /**
      * Returns an array containing all of the elements in this collection. If this collection makes any guarantees as to what order its elements are returned by its iterator, this method must return the elements in the same order.
      * The returned array will be "safe" in that no references to it are maintained by this collection. (In other words, this method must allocate a new array even if this collection is backed by an array). The caller is thus free to modify the returned array.
@@ -251,7 +291,6 @@ export class ArrayList<E> implements List<E> {
         // return new array
         return newArray; 
     }
-
     /**
      * Returns a string representation of this collection. 
      * The string representation consists of a list of the collection's elements in the order they are returned by its iterator, enclosed in square brackets ("[]"). 
