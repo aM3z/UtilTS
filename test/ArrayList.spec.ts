@@ -235,6 +235,35 @@ describe('ArrayList', () => {
         expect(a.remove(true)).to.equal(false);        
     });
 
+    it('set(index: number, element: E)', () => {
+        // test index out of range 
+        assert.throw(function() {
+          a.set(0, "washington");
+        }, RangeError);
+
+        a.add("chocolate");
+        a.add("labs");
+        a.add("love");
+        a.add("swimming");
+        a.add("in creeks");
+
+        // set first element
+        a.set(0, "all");
+        expect(a.contains("chocolate")).to.equal(false);
+        expect(a.indexOf("all")).to.equal(0);
+
+        // set middle element
+        a.set(2, "enjoy");
+        expect(a.contains("love")).to.equal(false);
+        expect(a.indexOf("enjoy")).to.equal(2);
+
+        // set last element
+        a.set(4, "in rivers");
+        expect(a.contains("in creeks")).to.equal(false);
+        expect(a.indexOf("in rivers")).to.equal(4);
+        
+    });
+
     it('toArray()', () => {
         a.add("welcome");
         a.add("to");
