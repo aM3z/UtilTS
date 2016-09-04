@@ -1,2 +1,10 @@
 # utiljs
-UtilJS is a module of data structures implemented in TypeScript.
+UtilJS is a module containing  data structures implemented in TypeScript. 
+
+## Collection Framework Hierarchy
+
+- List
+- Queue
+- Set
+
+
