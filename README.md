@@ -7,4 +7,4 @@ UtilJS is a module containing  data structures implemented in TypeScript.
 - Queue
 - Set
 
-![UML Diagram](https://github.com/aM3z/utiljs/blob/master/uml.png "UML Diagram" | width=300)
+![UML Diagram](https://github.com/aM3z/utiljs/blob/master/uml.png)
