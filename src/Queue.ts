@@ -1,55 +1,37 @@
+import {List} from './List';
 
 /**
- * A collection designed for holding elements prior to processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either null or false, depending on the operation). The latter form of the insert operation is designed specifically for use with capacity-restricted Queue implementations; in most implementations, insert operations cannot fail.
- * 
- * E - the type of elements held in this collection
+ * Interface for holding elements prior to processing. 
  * 
  * @interface Queue
  * @template E
  */
-export interface Queue<E> {
-
+export interface Queue<E> extends List<E> {
+    
     /**
-     * Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+     * Removes the element from the front of the queue.
      * 
-     * @param {E} e
-     * @returns {boolean}
+     * @returns {E} the element that was removed
      */
-    add(e: E): boolean;
-
+    dequeue(): E;
     /**
-     * Retrieves, but does not remove, the head of this queue.
+     * Adds an element onto the end of the queue.
      * 
-     * @returns {E}
+     * @param {E} newElement - element that is to be added
+     * @returns {boolean} return true if new element was added successfully
      */
-    element(): E;
-
+    enqueue(newElement: E): boolean;
     /**
-     * Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions.
+     * Returns the element at the front of the queue.
      * 
-     * @param {E} e
-     * @returns {boolean}
+     * @returns {E} element at the front of the queue
      */
-    offer(e: E):boolean;
-
+    front(): E;
     /**
-     * Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
+     * Returns true if no more elements can be enqueued.
      * 
-     * @returns {E}
+     * @returns {boolean} true if no more elements can be enqueued.
      */
-    peek(): E;
+    isFull(): boolean;
 
-    /**
-     * Retrieves and removes the head of this queue, or returns null if this queue is empty.
-     * 
-     * @returns {E}
-     */
-    poll(): E;
-
-    /**
-     * Retrieves and removes the head of this queue.
-     * 
-     * @returns {E}
-     */
-    remove(): E;
 }

@@ -2,7 +2,7 @@ import {Collection} from './Collection';
 import {Iterator} from './Iterator';
 
 /**
- * An ordered collection (also known as a sequence).
+ * Interface for ordered collections of elements.
  * 
  * @export
  * @interface List
@@ -21,13 +21,13 @@ export interface List<E> extends Collection<E> {
     /**
      * Returns the iterator that represents the first element of the list. Runs in O(1) time.
      * 
-     * @returns {Iterator<E>}
+     * @returns {Iterator<E>} the iterator that represents the first element of the list
      */
     getBegin(): Iterator<E>;
     /**
      * Returns the iterator that represents one element past the last element in the list. Runs in O(1) time.
      * 
-     * @returns {Iterator<E>}
+     * @returns {Iterator<E>} the iterator that represents one element past the last element in the list
      */
     getEnd(): Iterator<E>;
     /**

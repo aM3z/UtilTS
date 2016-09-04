@@ -8,6 +8,18 @@ import {Iterator} from './Iterator';
  */
 export interface Collection<E> {
     /**
+     * Removes all elements from this collection.
+     * 
+     */
+    clear(): void;
+    /**
+     * Compares the specified object with this collection for equality.
+     * 
+     * @param {Object} o - object to be compared for equality with this collection
+     * @returns {boolean} true if the specified object is equal to this collection 
+     */
+    equals(o: Object): boolean;
+    /**
      * Adds a new element to this collection. Runs in O(N) time.
      * If `iter` is specified, then the new element is added immediately before `iter`.
      * Otherwise, add the new element to the end of the collection.

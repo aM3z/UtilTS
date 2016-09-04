@@ -1,18 +1,4 @@
 /**
- * The StackInterface interface.
- * 
- * @interface StackInterface
- * @template T
- */
-interface StackInterface<E> {
-  empty(): boolean;
-  peek(): E;
-  pop(): E;
-  push(item: E): E;
-  search(o: Object): number;
-}
-
-/**
  * The Stack class represents a last-in-first-out (LIFO) stack of objects. It
  * extends class Vector with five operations that allow a vector to be treated
  * as a stack. The usual push and pop operations are provided, as well as a
@@ -29,7 +15,7 @@ interface StackInterface<E> {
  * 
  * @author Miguel Amezola <amezolma@plu.edu>
  */
-export class Stack<E> implements StackInterface<E> {
+export class Stack<E>  {
 
   /**
    * Stores element data.
