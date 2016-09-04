@@ -1,8 +1,8 @@
 import {Collection} from './Collection';
-import {ListIterator} from './ListIterator';
+import {Iterator} from './Iterator';
 
 /**
- * An ordered collection (also known as a sequence). The user of this interface has precise control over where in the list each element is inserted. The user can access elements by their integer index (position in the list), and search for elements in the list.
+ * An ordered collection (also known as a sequence).
  * 
  * @export
  * @interface List
@@ -11,43 +11,48 @@ import {ListIterator} from './ListIterator';
  */
 export interface List<E> extends Collection<E> {
     /**
-     * Returns the element at the specified position in this list.
+     * Returns the nth element in the list, counting from 0. Runs in O(N) time.
      * 
-     * @param {number} index - index of the element to return
-     * @returns {E} the element at the specified position in this list
-     * @throw {Error}  if the index is out of range (index < 0 || index >= size())
+     * @param {number} index - index of the nth element in the list
+     * @returns {E} the nth element in the list, counting from 0
+     * @throw {RangeError} if the index is out of range (index < 0 || index >= size())
      */
     get(index: number): E;
     /**
-     * Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
+     * Returns the iterator that represents the first element of the list. Runs in O(1) time.
      * 
-     * @param {Object} o - element to search for
-     * @returns {number} the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element
+     * @returns {Iterator<E>}
      */
-    indexOf(o: Object): number;
+    getBegin(): Iterator<E>;
     /**
-     * Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element. 
-     * More formally, returns the highest index i such that (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
+     * Returns the iterator that represents one element past the last element in the list. Runs in O(1) time.
      * 
-     * @param {Object} o - element to search for
-     * @returns {number} the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element
+     * @returns {Iterator<E>}
      */
-    lastIndexOf(o: Object): number;
+    getEnd(): Iterator<E>;
     /**
-     * Returns a list iterator over the elements in this list (in proper sequence), starting at the specified position in the list. The specified index indicates the first element that would be returned by an initial call to `next`. An initial call to `previous` would return the element with the specified index minus one.
+     * Adds a new element immediately before `iter`. Runs in O(N) time.
      * 
-     * @param {number} index - index of the first element to be returned from the list iterator (by a call to next)
-     * @returns {ListIterator<E>} a list iterator over the elements in this list (in proper sequence), starting at the specified position in the list
-     * @throw {Error} if the index is out of range (index < 0 || index > size())
+     * @param {Iterator<E>} iter - new element is added immediately before this
+     * @param {E} newElement - a new element
+     * @returns {boolean} returns true if new element was successfully added
      */
-    listIterator(index: number): ListIterator<E>;
+    insert(iter: Iterator<E>, newElement: E): boolean;
     /**
-     * Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive.
+     * Removes the element immediately referred to by `iter`. After this call, `iter` will refer to the next element in the list. Runs in O(N) time.
      * 
-     * @param {number} fromIndex - low endpoint (inclusive) of the subList
-     * @param {number} toIndex - high endpoint (exclusive) of the subList
-     * @returns {List<E>} a view of the specified range within this list
-     * @throw {Error} for an illegal endpoint index value (fromIndex < 0 || toIndex > size || fromIndex > toIndex)
+     * @param {Iterator<E>} iter - an Iterator immediately referring to the element to be removed
+     * @returns {boolean} return true if element was successfully removed
      */
-    subList(fromIndex: number, toIndex: number): List<E>;
+    remove(iter: Iterator<E>): boolean;
+    /**
+     * Assigns a new value to the nth element in the list, counting from 0. Runs in O(N) time.
+     * 
+     * @param {number} index - index of the nth element in the list
+     * @param {E} newValue - new value fo the nth element 
+     * @returns {E} returns the previous value of the nth element
+     * @throws {RangeError} if the index is out of range (index < 0 || index >= size()) 
+     */
+    set(index: number, newValue: E): E;
+
 }

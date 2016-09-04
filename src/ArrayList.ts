@@ -1,6 +1,5 @@
 import {List} from './List';
 import {Iterator} from './Iterator';
-import {ListIterator} from './ListIterator';
 import {Collection} from './Collection';
 
 /**
@@ -209,7 +208,7 @@ export class ArrayList<E> implements List<E> {
         return index;        
     }
     // not implementated yet
-    public listIterator(index: number): ListIterator<E> {return null; }
+    public listIterator(index: number): Iterator<E> {return null; }
 
 
     public remove(element: number | any): E | boolean { 
