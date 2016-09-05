@@ -1,5 +1,5 @@
-# utiljs
-UtilJS is a module containing  data structures implemented in TypeScript. 
+# UtilTS
+UtilTS is a module containing  data structures implemented in TypeScript. 
 
 ## Collection Framework Hierarchy
 A collection represents a group of objects, known as its elements. The Collection interface has the following operations:
