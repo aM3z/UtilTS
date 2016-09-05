@@ -14,6 +14,7 @@ namespace Collections {
          * Adds an element to this collection.
          * 
          * @param {E} element - element to be added
+         * @param {number} [index] - index of element to be added
          * @returns {boolean} true if element is successfully added
          */
         add(element: E, index?: number): boolean;
@@ -33,7 +34,7 @@ namespace Collections {
         /**
          * Removes an element from this collection.
          * 
-         * @param {E} element - element to be removed
+         * @param {(E | number)} element - the Object or index of element to be removed
          * @returns {boolean} true if element is successfully removed
          */
         remove(element: E | number): boolean;

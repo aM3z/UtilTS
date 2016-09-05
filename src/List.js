@@ -1,1 +1,1 @@
-"use strict";
+/// <reference path="Collection.ts" />
