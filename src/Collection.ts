@@ -7,28 +7,23 @@ namespace Collections {
      * @template E
      */
     export interface Collection<E> {
+
+        // BASIC OPERATIONS
+
         /**
-         * Removes all elements from this collection.
+         * Adds an element to this collection.
          * 
+         * @param {E} element - element to be added
+         * @returns {boolean} true if element is successfully added
          */
-        clear(): void;
+        add(element: E): boolean;
         /**
-         * Compares the specified object with this collection for equality.
+         * Returns true if a target element is in this collection.
          * 
-         * @param {Object} o - object to be compared for equality with this collection
-         * @returns {boolean} true if the specified object is equal to this collection 
+         * @param {E} element - target element
+         * @returns {boolean} true if target element is in this collection
          */
-        equals(o: Object): boolean;
-        /**
-         * Adds a new element to this collection. Runs in O(N) time.
-         * If `iter` is specified, then the new element is added immediately before `iter`.
-         * Otherwise, add the new element to the end of the collection.
-         *
-         * @param {E} newElement - a new element
-         * @param {Iterator<E>} [iter] the new element is added immediately before this
-         * @returns {boolean} returns true if new element was successfully added
-         */
-        insert(newElement: E, iter?: Iterator<E>): boolean;
+        contains(element: E): boolean;
         /**
          * Returns true if this collection contains no elements.
          * 
@@ -37,19 +32,36 @@ namespace Collections {
         isEmpty(): boolean;
         /**
          * Removes an element from this collection.
-         * If `param` is an instance of Iterator, then the element immediately referred to by `param` is removed.
-         * If `param` is an element of type E and the element is in this collection, then the element is removed.
          * 
-         * @param {(Iterator<E> | E)} [param] an instance of Iterator reffering to the element to be rmeoved or an element of type E
-         * @returns {boolean} true if an element is successfully removed
+         * @param {E} element - element to be removed
+         * @returns {boolean} true if element is successfully removed
          */
-        remove(param?: Iterator<E> | E): boolean;
+        remove(element: E): boolean;
         /**
          * Returns the number of elements in this collection.
          * 
          * @returns {number} the number of elements in this collection
          */
         size(): number;
+
+        // BULK OPERATIONS
+
+        /**
+         * Removes all elements from this collection.
+         * 
+         */
+        clear(): void;
+
+
+        // ARRAY OPERATIONS
+
+        /**
+         * Translates the contents of this collection into an array.
+         * 
+         * @returns {E[]} the contents of this collection as an array
+         */
+        toArray(): E[];
+
     }
 }
 	

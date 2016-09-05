@@ -1,4 +1,3 @@
-/// <reference path="Collections.ts" />
 /// <reference path="List.ts" />
 
 namespace Collections {
