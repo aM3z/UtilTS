@@ -1,5 +1,5 @@
 {
-  "name": "data-structures-js",
+  "name": "utilts",
   "version": "1.0.0",
   "description": "UtilJS is a module of data structures implemented in TypeScript.",
   "main": "index.js",
