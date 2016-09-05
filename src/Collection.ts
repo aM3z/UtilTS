@@ -16,7 +16,7 @@ namespace Collections {
          * @param {E} element - element to be added
          * @returns {boolean} true if element is successfully added
          */
-        add(element: E): boolean;
+        add(element: E, index?: number): boolean;
         /**
          * Returns true if a target element is in this collection.
          * 
@@ -36,7 +36,7 @@ namespace Collections {
          * @param {E} element - element to be removed
          * @returns {boolean} true if element is successfully removed
          */
-        remove(element: E): boolean;
+        remove(element: E | number): boolean;
         /**
          * Returns the number of elements in this collection.
          * 

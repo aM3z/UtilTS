@@ -1,12 +1,13 @@
+/// <reference path="Collection.ts" />
+
 namespace Collections {
-    
-    export class List<E> extends Collection<E> {
+    export interface List<E> extends Collection<E> {
         // POSITIONAL ACCESS
 		get(index: number): E;
 		set(index: number): E;
-		add(index: number, element: E): boolean;
+		add(element: E, index: number): boolean;
 		remove(index: number): boolean;
-		addAll(index: int, c: Colletion<E>): boolean;
+		addAll(index: number, c: Collection<E>): boolean;
 
         // SEARCH
 		indexOf(element: E): number;
