@@ -3,7 +3,7 @@ import {Iterator} from './Iterator';
 import {Collection} from './Collection';
 
 /**
- * Resizable-array implementation of the List interface.
+ * Array-based list implementation.
  * 
  * @export
  * @class ArrayList
@@ -15,12 +15,18 @@ import {Collection} from './Collection';
 export class ArrayList<E> implements List<E> {
 
     /**
-     * The array buffer into which the elements of the ArrayList are stored.
+     * Array holding list of elements.
      * 
      * @private
      * @type {E[]}
      */
     private _elementData: E[];
+    /**
+     * Number of elements in this list.
+     * 
+     * @private
+     * @type {number}
+     */
     private _size: number;
 
     /**
