@@ -17,6 +17,9 @@ describe('ArrayList', () => {
         expect(a instanceof ArrayList).to.equal(true);        
     });
 
+	it('indexOf(element: E): number', () => { });
+
+	it('lastIndexOf(element: E): number' () => { });
 
     it('toString()', () => {
         // test empty arraylist  

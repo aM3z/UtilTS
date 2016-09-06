@@ -1,5 +1,6 @@
 import {List} from './List';
 import {Collection} from './Collection';
+
 /**
  * Resizable-array implementation of the List interface.
  *
@@ -36,19 +37,28 @@ export class ArrayList<E> implements List<E> {
 	 * @param {E} element - target element
 	 * @returns {boolean} true if target element is in this collection
 	 */
-	contains(element: E): boolean { return; }
+	contains(element: E): boolean { 
+		if(this._elementData.indexOf(element) >= 0) {
+			return true;
+		}
+		return false;
+	}
 	/**
 	 * Returns true if this collection contains no elements.
 	 *
 	 * @returns {boolean} true if this collection contains no elements
 	 */
-	isEmpty(): boolean { return; }
+	isEmpty(): boolean { 
+		return this._elementData.length === 0; 
+	}
 	/**
 	 * Returns the number of elements in this collection.
 	 *
 	 * @returns {number} the number of elements in this collection
 	 */
-	size(): number { return; }
+	size(): number { 
+		return this._elementData.length; 
+	}
 
 	// BULK OPERATIONS
 
@@ -56,7 +66,9 @@ export class ArrayList<E> implements List<E> {
 	 * Removes all elements from this collection.
 	 *
 	 */
-	clear(): void { }
+	clear(): void {
+  		this._elementData.length = 0; 
+	}
 
 
 	// ARRAY OPERATIONS
@@ -95,9 +107,45 @@ export class ArrayList<E> implements List<E> {
 	 * @param {E} element - element to be inserted
 	 * @param {number} index - index at which the specified element is to be inserted
 	 * @returns {boolean} true if element was successfully added
-	 * @throw {RangeError} if the index is out of range (index < 0 || index > size())
+	 * @throws {RangeError} if the index is out of range (index < 0 || index > size())
 	 */
-	add(element: E, index: number): boolean { return; }
+	add(element: E, index: number): boolean {
+		// if index if out of range
+		if(index < 0 || index > this.size()) {
+			throw new RangeError('index is out of range (index < 0 || index > size())');
+		}
+
+		// store original size of this list
+		let originalSize: number = this.size();
+
+		// if index equals 0, then `unshift` 
+		if(index === 0) {
+			this._elementData.unshift(element);
+
+		// if index equals `size`, then `push`
+		} else if(index === this.size()) {
+			this._elementData.push(element);
+
+		// othersize
+		} else {
+			// splice `_elementData` into left and right arrays about the specified index
+			// put element current at index into right array
+			let left: E[] = this._elementData.slice(0, index);
+			let right: E[] = this._elementData.slice(index);
+			// put `element` in its own array to facilitate `concat` operation
+			let elementContainer: E[] = [element]; 
+			// `concat` left, elementContainer, and right (in that order) to form a new `_elementData` array
+			this._elementData = left.concat(elementContainer, right);
+		}
+
+		// return true if element was added successdully
+		if(this.size() === originalSize + 1)  {
+			return true;
+		}
+
+		return false;
+	
+	}
 	/**
 	 * Removes the element at the specified position in this list.
 	 * Shifts any subsequent elements to the left (subtracts one from their indices).
@@ -105,8 +153,41 @@ export class ArrayList<E> implements List<E> {
 	 *
 	 * @param {number} index - the index of the element to be removed
 	 * @returns {boolean} true if element was successfully removed
+	 * @throws {RangeError} if the index is out of range (index < 0 || index > size())
 	 */
-	remove(index: number): boolean { return; }
+	remove(index: number): boolean {
+  		// if index if out of range 
+		if(index < 0 || index >= this.size()) {
+			throw new RangeError('index is out of range (index < 0 || index > size())');
+		}
+
+		// store original `size` of this list
+		let originalSize: number = this.size();
+
+		// if `index` equals 0, then `shift`
+		if(index === 0) {
+			this._elementData.shift();
+		
+		// if `index` equals `size`, then `pop`
+		} else if(index === this.size()) {
+			this._elementData.pop();
+
+		// otherwise
+		} else {
+			// splice `_elementData` into left and right arrays about the specified index
+			// do not include element currently at specified index
+			let left: E[] = this._elementData.slice(0, index);
+			let right: E[] = this._elementData.slice(index + 1);
+			// `concat` left, elementContainer, and right (in that order) to form a new `_elementData` array
+			this._elementData = left.concat(right);
+
+		}
+		// return true if element was remove successfully
+		if(this.size() === originalSize - 1) {
+			return true;
+		}
+		return false;
+	}
 	/**
 	 * Inserts all of the elements in the specified collection into this list at the specified position (optional operation).
 	 * Shifts the element currently at that position (if any) and any subsequent elements to the right (increases their indices).
@@ -125,14 +206,18 @@ export class ArrayList<E> implements List<E> {
 	 * @param {E} element - element to search for
 	 * @returns {number} the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element
 	 */
-	indexOf(element: E): number { return; }
+	indexOf(element: E): number { 
+		return this._elementData.indexOf(element); 
+	}
 	/**
 	 * Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.
 	 *
 	 * @param {E} element - element to search for
 	 * @returns {number} the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element
 	 */
-	lastIndexOf(element: E): number { return; }
+	lastIndexOf(element: E): number { 
+		return this._elementData.lastIndexOf(element); 
+	}
 
 	// RANGE-VIEW
 
