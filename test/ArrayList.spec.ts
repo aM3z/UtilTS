@@ -158,7 +158,27 @@ describe('ArrayList', () => {
 
     });
 
-	// it('lastIndexOf(element: E): number' () => { });
+	it('lastIndexOf(element: E): number', () => {
+        // test empty list
+        expect(a.lastIndexOf("washington")).to.equal(-1);
+
+        // add several element to list
+        testData1.forEach((item, index) => a.add(item, index));
+
+        // test first element
+        expect(a.lastIndexOf("welcome")).to.equal(0);
+
+        // test middle element
+        expect(a.lastIndexOf("mount")).to.equal(2);
+
+        // test final element
+        expect(a.lastIndexOf("rainier")).to.equal(3);
+
+        // test duplicate
+        a.add("rainier", 0);
+        expect(a.lastIndexOf("rainier")).to.equal(a.size() - 1);    
+
+    });
 
     it('toString()', () => {
         // test empty arraylist  

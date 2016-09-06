@@ -122,7 +122,21 @@ describe('ArrayList', function () {
         // test final element
         chai_1.expect(a.indexOf("rainier")).to.equal(3);
     });
-    // it('lastIndexOf(element: E): number' () => { });
+    it('lastIndexOf(element: E): number', function () {
+        // test empty list
+        chai_1.expect(a.lastIndexOf("washington")).to.equal(-1);
+        // add several element to list
+        testData1.forEach(function (item, index) { return a.add(item, index); });
+        // test first element
+        chai_1.expect(a.lastIndexOf("welcome")).to.equal(0);
+        // test middle element
+        chai_1.expect(a.lastIndexOf("mount")).to.equal(2);
+        // test final element
+        chai_1.expect(a.lastIndexOf("rainier")).to.equal(3);
+        // test duplicate
+        a.add("rainier", 0);
+        chai_1.expect(a.lastIndexOf("rainier")).to.equal(a.size() - 1);
+    });
     it('toString()', function () {
         // test empty arraylist  
         chai_1.expect(a.toString()).to.equal("[]");
