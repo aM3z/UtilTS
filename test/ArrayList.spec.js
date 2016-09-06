@@ -146,5 +146,6 @@ describe('ArrayList', function () {
         a.add("vici", 2);
         // test non-empty arraylist
         chai_1.expect(a.toString()).to.equal("[veni, vidi, vici]");
+        console.log(a.toString());
     });
 });

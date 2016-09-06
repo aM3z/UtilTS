@@ -239,15 +239,10 @@ export class ArrayList<E> implements List<E> {
 	 * @returns {string} a string representation of this collection
 	 */
 	public toString(): string {
-		// string representation
-		let s: string;
 		// begin with a square bracket
-		// add each element to the string
 		// seperate element by the characters ", "
 		// end with a square bracket
-		s = "[" + this._elementData.join(", ") + "]";
-		// return string representation
-		return s;
+		return  "[" + this._elementData.join(", ") + "]";
 	}
 
 }

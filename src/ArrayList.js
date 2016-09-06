@@ -201,15 +201,10 @@ var ArrayList = (function () {
      * @returns {string} a string representation of this collection
      */
     ArrayList.prototype.toString = function () {
-        // string representation
-        var s;
         // begin with a square bracket
-        // add each element to the string
         // seperate element by the characters ", "
         // end with a square bracket
-        s = "[" + this._elementData.join(", ") + "]";
-        // return string representation
-        return s;
+        return "[" + this._elementData.join(", ") + "]";
     };
     return ArrayList;
 }());
