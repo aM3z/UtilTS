@@ -2,9 +2,9 @@
 /// <reference path='../typings/chai/chai.d.ts' />
 "use strict";
 var chai_1 = require('chai');
-var Collections_1 = require('../src/Collections');
+var Util_1 = require('../Util');
 describe('Stack', function () {
-    var s = new Collections_1.Stack();
+    var s = new Util_1.Stack();
     // beforeEach(() => s = new Stack<number>());
     // afterEach(() => s = null);
     it('constructor()', function () {

@@ -2,15 +2,84 @@
 /// <reference path='../typings/chai/chai.d.ts' />
 "use strict";
 var chai_1 = require('chai');
-var ArrayList_1 = require('../src/ArrayList');
+var Util_1 = require('../Util');
 describe('ArrayList', function () {
     var a;
-    beforeEach(function () { return a = new ArrayList_1.ArrayList(); });
+    var testData1 = ["welcome", "to", "mount", "rainier"];
+    beforeEach(function () { return a = new Util_1.ArrayList(); });
     afterEach(function () { return a = null; });
     it('constructor()', function () {
         chai_1.expect(typeof a).to.equal("object");
-        chai_1.expect(a instanceof ArrayList_1.ArrayList).to.equal(true);
+        chai_1.expect(a instanceof Util_1.ArrayList).to.equal(true);
     });
+    it('contains(element: E): boolean', function () {
+        // test on empty list
+        chai_1.expect(a.contains("anything")).to.equal(false);
+        // test on list with one element
+        a.add("washington", 0);
+        chai_1.expect(a.contains("washington")).to.equal(true);
+        chai_1.expect(a.contains("anything")).to.equal(false);
+        // test on list with many elements
+        testData1.forEach(function (item, index) { return a.add(item, index); });
+        chai_1.expect(a.contains("rainier")).to.equal(true);
+        chai_1.expect(a.contains("welcome")).to.equal(true);
+        chai_1.expect(a.contains("to")).to.equal(true);
+        chai_1.expect(a.contains("anything")).to.equal(false);
+    });
+    it('isEmpty(): boolean', function () {
+        // test empty list
+        chai_1.expect(a.isEmpty()).to.equal(true);
+        // test list with one element
+        a.add("washington", 0);
+        chai_1.expect(a.isEmpty()).to.equal(false);
+        // test list with several elements
+        testData1.forEach(function (item, index) { return a.add(item, index); });
+        chai_1.expect(a.isEmpty()).to.equal(false);
+    });
+    it('size(): number', function () {
+        // test empty list
+        chai_1.expect(a.size()).to.equal(0);
+        // test list with one element
+        a.add("washington", 0);
+        chai_1.expect(a.size()).to.equal(1);
+        // test list with several elements
+        testData1.forEach(function (item, index) { return a.add(item, index); });
+        chai_1.expect(a.size()).to.equal(testData1.length + 1);
+    });
+    it('clear(): void', function () {
+        // test empty list
+        a.clear();
+        chai_1.expect(a.size()).to.equal(0);
+        // test list with one element
+        a.add("washington", 0);
+        a.clear();
+        chai_1.expect(a.size()).to.equal(0);
+        // test list with several elements
+        testData1.forEach(function (item, index) { return a.add(item, index); });
+        chai_1.expect(a.size()).to.equal(testData1.length);
+        a.clear();
+        chai_1.expect(a.size()).to.equal(0);
+    });
+    it('add(element: E, index: number): boolean', function () {
+        // test with index out of range
+        chai_1.expect(function () {
+            a.add("washington", 4);
+        }).to.throw('index is out of range (index < 0 || index > size())');
+        // test with one element
+        a.add("washington", 0);
+        chai_1.expect(a.indexOf("washington")).to.equal(0);
+        // test with first index
+        a.add("state", 0);
+        chai_1.expect(a.indexOf("state")).to.equal(0);
+        chai_1.expect(a.indexOf("washington")).to.equal(1);
+        // test with middle index
+        a.add("of", 1);
+        chai_1.expect(a.indexOf("state")).to.equal(0);
+        chai_1.expect(a.indexOf("of")).to.equal(1);
+        chai_1.expect(a.indexOf("washington")).to.equal(2);
+    });
+    // it('indexOf(element: E): number', () => { });
+    // it('lastIndexOf(element: E): number' () => { });
     it('toString()', function () {
         // test empty arraylist  
         chai_1.expect(a.toString()).to.equal("[]");

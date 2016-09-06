@@ -37,7 +37,7 @@ export class ArrayList<E> implements List<E> {
 	 * @param {E} element - target element
 	 * @returns {boolean} true if target element is in this collection
 	 */
-	contains(element: E): boolean { 
+	public contains(element: E): boolean { 
 		if(this._elementData.indexOf(element) >= 0) {
 			return true;
 		}
@@ -48,7 +48,7 @@ export class ArrayList<E> implements List<E> {
 	 *
 	 * @returns {boolean} true if this collection contains no elements
 	 */
-	isEmpty(): boolean { 
+	public isEmpty(): boolean { 
 		return this._elementData.length === 0; 
 	}
 	/**
@@ -56,7 +56,7 @@ export class ArrayList<E> implements List<E> {
 	 *
 	 * @returns {number} the number of elements in this collection
 	 */
-	size(): number { 
+	public size(): number { 
 		return this._elementData.length; 
 	}
 
@@ -66,7 +66,7 @@ export class ArrayList<E> implements List<E> {
 	 * Removes all elements from this collection.
 	 *
 	 */
-	clear(): void {
+	public clear(): void {
   		this._elementData.length = 0; 
 	}
 
@@ -109,7 +109,7 @@ export class ArrayList<E> implements List<E> {
 	 * @returns {boolean} true if element was successfully added
 	 * @throws {RangeError} if the index is out of range (index < 0 || index > size())
 	 */
-	add(element: E, index: number): boolean {
+	public add(element: E, index: number): boolean {
 		// if index if out of range
 		if(index < 0 || index > this.size()) {
 			throw new RangeError('index is out of range (index < 0 || index > size())');
@@ -155,7 +155,7 @@ export class ArrayList<E> implements List<E> {
 	 * @returns {boolean} true if element was successfully removed
 	 * @throws {RangeError} if the index is out of range (index < 0 || index > size())
 	 */
-	remove(index: number): boolean {
+	public remove(index: number): boolean {
   		// if index if out of range 
 		if(index < 0 || index >= this.size()) {
 			throw new RangeError('index is out of range (index < 0 || index > size())');
@@ -243,20 +243,10 @@ export class ArrayList<E> implements List<E> {
 		// string representation
 		let s: string;
 		// begin with a square bracket
-		s = "[";
 		// add each element to the string
 		// seperate element by the characters ", "
-		this._elementData.forEach(element => {
-			s += element + ", ";
-		})
-		// trim white space from s
-		s = s.trim();
-		// remove extra comma
-		if(s.length > 2) {
-			s = s.slice(0, s.length - 1);
-		}
 		// end with a square bracket
-		s += "]";
+		s = "[" + this._elementData.join(", ") + "]";
 		// return string representation
 		return s;
 	}

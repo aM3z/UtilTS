@@ -2,7 +2,7 @@
   "name": "utilts",
   "version": "1.0.0",
   "description": "UtilTS is a module of data structures implemented in TypeScript.",
-  "main": "index.js",
+  "main": "Util.ts",
   "scripts": {
     "prepublish": "tsc src/*.js src/*.ts --module commonjs",
     "pretest": "tsc test/*.spec.ts --module commonjs",
