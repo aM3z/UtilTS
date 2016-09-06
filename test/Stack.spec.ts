@@ -1,12 +1,17 @@
 /// <reference path='../typings/mocha/mocha.d.ts' />
 /// <reference path='../typings/chai/chai.d.ts' />
 
-import {Stack} from '../src/Stack';
 import {expect} from 'chai';
 import {assert} from 'chai';
+import {Stack} from '../src/Collections';
 
 describe('Stack', () => {
+
   let s: Stack<number> = new Stack<number>();
+
+  // beforeEach(() => s = new Stack<number>());
+
+  // afterEach(() => s = null);
 
   it('constructor()', () => {
     expect(typeof s).to.equal('object');
@@ -38,7 +43,6 @@ describe('Stack', () => {
   });
 
   it('search()', () => {
-    s = new Stack<number>();
     s.push(2);
     expect(s.search(2)).to.equal(1);
     s.push(2);

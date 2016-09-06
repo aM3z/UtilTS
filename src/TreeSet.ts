@@ -1,3 +1,1 @@
-namespace Collections {
-    export class TreeSet<E> {}
-}
+export class TreeSet<E> {}

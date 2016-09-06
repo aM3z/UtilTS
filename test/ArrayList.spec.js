@@ -1,8 +1,8 @@
 /// <reference path='../typings/mocha/mocha.d.ts' />
 /// <reference path='../typings/chai/chai.d.ts' />
 "use strict";
-var ArrayList_1 = require('../src/ArrayList');
 var chai_1 = require('chai');
+var ArrayList_1 = require('../src/ArrayList');
 describe('ArrayList', function () {
     var a;
     beforeEach(function () { return a = new ArrayList_1.ArrayList(); });

@@ -1,9 +1,9 @@
 /// <reference path='../typings/mocha/mocha.d.ts' />
 /// <reference path='../typings/chai/chai.d.ts' />
 
-import {ArrayList} from '../src/ArrayList';
 import {expect} from 'chai';
 import {assert} from 'chai';
+import {ArrayList} from '../src/ArrayList';
 
 describe('ArrayList', () => {
 

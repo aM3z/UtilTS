@@ -1,3 +1,1 @@
-namespace Collections {
-    export class LinkedList<E> {}
-}
+export class LinkedList<E> {}
