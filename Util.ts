@@ -11,6 +11,12 @@ export {Set} from './src/Set';
 
 // Classes
 export {ArrayList} from './src/ArrayList';
-export {Stack} from './src/Stack';
 export {LinkedList} from './src/LinkedList';
 export {TreeSet} from './src/TreeSet';
+
+/**
+ *
+ * Other
+ *
+ */
+export {Stack} from './src/Stack';
