@@ -149,7 +149,6 @@ export class ArrayList<E> implements List<E> {
 	/**
 	 * Removes the element at the specified position in this list.
 	 * Shifts any subsequent elements to the left (subtracts one from their indices).
-	 * Returns the element that was removed from the list.
 	 *
 	 * @param {number} index - the index of the element to be removed
 	 * @returns {boolean} true if element was successfully removed

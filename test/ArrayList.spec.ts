@@ -107,6 +107,39 @@ describe('ArrayList', () => {
               
     });
 
+    it('remove(index: number): boolean', () => {
+        // test with index out of range
+        expect(function() {
+            a.remove(4);
+        }).to.throw('index is out of range (index < 0 || index > size())');
+
+        // test with one element
+        a.add("washington", 0);
+        expect(a.remove(0)).to.equal(true);
+        expect(a.size()).to.equal(0);
+        
+        // add several element to list
+        testData1.forEach((item, index) => a.add(item, index));
+        
+        // test revove first
+        expect(a.remove(0)).to.equal(true);
+        expect(a.contains("welcome")).to.equal(false);
+        expect(a.indexOf("to")).to.equal(0);        
+
+        // test remove middle
+        expect(a.remove(1)).to.equal(true);
+        expect(a.contains("mount")).to.equal(false);
+        expect(a.indexOf("to")).to.equal(0);        
+        expect(a.indexOf("rainier")).to.equal(1);        
+
+        // test remove last 
+        expect(a.remove(1)).to.equal(true);
+        expect(a.contains("rainier")).to.equal(false);
+        expect(a.indexOf("to")).to.equal(0);        
+        expect(a.size()).to.equal(1);        
+
+    });
+
 	// it('indexOf(element: E): number', () => { });
 
 	// it('lastIndexOf(element: E): number' () => { });
