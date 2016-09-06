@@ -141,10 +141,10 @@ describe('ArrayList', function () {
         // test empty arraylist  
         chai_1.expect(a.toString()).to.equal("[]");
         // add three elements
-        //        a.add("veni");
-        //        a.add("vidi");
-        //        a.add("vici");
+        a.add("veni", 0);
+        a.add("vidi", 1);
+        a.add("vici", 2);
         // test non-empty arraylist
-        //        expect(a.toString()).to.equal("[veni, vidi, vici]");
+        chai_1.expect(a.toString()).to.equal("[veni, vidi, vici]");
     });
 });

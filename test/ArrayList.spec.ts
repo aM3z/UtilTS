@@ -184,10 +184,10 @@ describe('ArrayList', () => {
         // test empty arraylist  
         expect(a.toString()).to.equal("[]");
         // add three elements
-//        a.add("veni");
-//        a.add("vidi");
-//        a.add("vici");
+        a.add("veni", 0);
+        a.add("vidi", 1);
+        a.add("vici", 2);
         // test non-empty arraylist
-//        expect(a.toString()).to.equal("[veni, vidi, vici]");
+        expect(a.toString()).to.equal("[veni, vidi, vici]");
     });
 });
