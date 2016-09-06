@@ -110,7 +110,18 @@ describe('ArrayList', function () {
         chai_1.expect(a.indexOf("to")).to.equal(0);
         chai_1.expect(a.size()).to.equal(1);
     });
-    // it('indexOf(element: E): number', () => { });
+    it('indexOf(element: E): number', function () {
+        // test empty list
+        chai_1.expect(a.indexOf("washington")).to.equal(-1);
+        // add several element to list
+        testData1.forEach(function (item, index) { return a.add(item, index); });
+        // test first element
+        chai_1.expect(a.indexOf("welcome")).to.equal(0);
+        // test middle element
+        chai_1.expect(a.indexOf("mount")).to.equal(2);
+        // test final element
+        chai_1.expect(a.indexOf("rainier")).to.equal(3);
+    });
     // it('lastIndexOf(element: E): number' () => { });
     it('toString()', function () {
         // test empty arraylist  

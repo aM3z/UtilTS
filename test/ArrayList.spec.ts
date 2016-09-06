@@ -140,7 +140,23 @@ describe('ArrayList', () => {
 
     });
 
-	// it('indexOf(element: E): number', () => { });
+	it('indexOf(element: E): number', () => {
+        // test empty list
+        expect(a.indexOf("washington")).to.equal(-1);
+
+        // add several element to list
+        testData1.forEach((item, index) => a.add(item, index));
+
+        // test first element
+        expect(a.indexOf("welcome")).to.equal(0);
+
+        // test middle element
+        expect(a.indexOf("mount")).to.equal(2);
+
+        // test final element
+        expect(a.indexOf("rainier")).to.equal(3);
+
+    });
 
 	// it('lastIndexOf(element: E): number' () => { });
 
